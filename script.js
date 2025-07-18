@@ -40,8 +40,9 @@ function displayHistory() {
 // レシピ取得
 async function getRecipe() {
   const ingredients = document.getElementById("ingredients").value;
-  const adultCount = document.getElementById("adultCount").value;
-  const childrenCount = document.getElementById("childrenCount").value;
+  const toddlers = Number(document.getElementById('toddlers').value);
+  const kids = Number(document.getElementById('kids').value);
+  const adults = Number(document.getElementById('adults').value);
   const wantKidsMenu = document.getElementById("wantKidsMenu").value;
   const genre = document.getElementById("genre").value;
   const request = document.getElementById("request").value;
@@ -58,8 +59,9 @@ async function getRecipe() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         ingredients,
-        adultCount,
-        childrenCount,
+        toddlers,
+        kids,
+        adults,
         wantKidsMenu,
         genre,
         request,
@@ -83,3 +85,8 @@ async function getRecipe() {
 // イベントリスナー
 retryBtn.addEventListener("click", getRecipe);
 showHistoryBtn.addEventListener("click", displayHistory);
+// フォームのsubmitイベントを監視（HTMLでformタグを使っているため）
+document.getElementById("recipeForm").addEventListener("submit", function(e) {
+  e.preventDefault(); // フォーム送信によるページリロードを防ぐ
+  getRecipe(); // レシピ取得関数を呼び出す
+});
