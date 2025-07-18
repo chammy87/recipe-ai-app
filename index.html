@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>レシピ提案AI</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="header-horizontal">
+    <div class="speech-bubble">今日のごはん<br />一緒に考えよう！</div>
+    <img src="/public/ferret_chef.png" alt="フェレットシェフ" class="ferret-image" />
+  </div>
+
+    <h1>きょうのごはん何にする？</h1>
+
+    <label>食材（カンマ区切り）</label>
+    <input type="text" id="ingredients" placeholder="例：キャベツ、卵、にんじん" />
+
+    <label>大人の人数</label>
+    <input type="number" id="adultCount" value="2" min="0"/>
+
+    <label>子どもの人数</label>
+    <input type="number" id="childrenCount" value="2" min="0"/>
+
+    <label>子ども向けメニュー希望</label>
+    <select id="wantKidsMenu">
+      <option value="はい">はい</option>
+      <option value="いいえ">いいえ</option>
+    </select>
+
+    <label>ジャンル（和食、洋食など）</label>
+    <input type="text" id="genre" placeholder="例：洋食"/>
+
+    <label>要望（調理方法など）</label>
+    <input type="text" id="request" placeholder="例：時短、行程が少ない" />
+
+    <label>避けたい食材</label>
+    <input type="text" id="avoid" placeholder="例：乳製品、ピーマン" />
+
+    <button class="btn" onclick="getRecipe()">レシピを提案してもらう</button>
+    
+    <div id="loading" class="loading" style="display: none;"></div>
+
+    <div class="result" id="result"></div>
+
+    <button class="btn" id="retryBtn" style="display:none;">🔄 もう一度提案してもらう</button>
+
+    <!-- 履歴表示ボタンと履歴一覧 -->
+    <button class="btn" id="showHistoryBtn" style="display:none;">📜 履歴を見る</button>
+    <div id="historyContainer" class="history-container" style="display:none;"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
