@@ -12,16 +12,20 @@
     <img src="/public/ferret_chef.png" alt="フェレットシェフ" class="ferret-image" />
   </div>
 
-    <h1>きょうのごはん何にする？</h1>
+  <h1>きょうのごはん何にする？</h1>
 
+  <form id="recipeForm">
     <label>食材（カンマ区切り）</label>
     <input type="text" id="ingredients" placeholder="例：キャベツ、卵、にんじん" />
 
-    <label>大人の人数</label>
-    <input type="number" id="adultCount" value="2" min="0"/>
+    <label>👶 幼児（0〜5歳）：</label>
+    <input type="number" id="toddlers" value="0" min="0" /><br>
 
-    <label>子どもの人数</label>
-    <input type="number" id="childrenCount" value="2" min="0"/>
+    <label>🧒 小学生（6〜12歳）：</label>
+    <input type="number" id="kids" value="0" min="0" /><br>
+
+    <label>👩‍🦰 大人（13歳以上）：</label>
+    <input type="number" id="adults" value="2" min="0" /><br>
 
     <label>子ども向けメニュー希望</label>
     <select id="wantKidsMenu">
@@ -38,18 +42,16 @@
     <label>避けたい食材</label>
     <input type="text" id="avoid" placeholder="例：乳製品、ピーマン" />
 
-    <button class="btn" onclick="getRecipe()">レシピを提案してもらう</button>
-    
-    <div id="loading" class="loading" style="display: none;"></div>
+    <button class="btn" type="submit">レシピを提案してもらう</button>
+  </form>
 
-    <div class="result" id="result"></div>
+  <div id="loading" class="loading" style="display: none;"></div>
 
-    <button class="btn" id="retryBtn" style="display:none;">🔄 もう一度提案してもらう</button>
+  <div class="result" id="result"></div>
 
-    <!-- 履歴表示ボタンと履歴一覧 -->
-    <button class="btn" id="showHistoryBtn" style="display:none;">📜 履歴を見る</button>
-    <div id="historyContainer" class="history-container" style="display:none;"></div>
-  </div>
+  <button class="btn" id="retryBtn" style="display:none;">🔄 もう一度提案してもらう</button>
+  <button class="btn" id="showHistoryBtn" style="display:none;">📜 履歴を見る</button>
+  <div id="historyContainer" class="history-container" style="display:none;"></div>
 
   <script src="script.js"></script>
 </body>
